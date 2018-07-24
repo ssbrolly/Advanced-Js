@@ -110,16 +110,133 @@
 
 // passing functions as arguments
 
-let years = [1995,1965, 1937, 2005, 1998];
+// let years = [1996, 1979, 1977, 2017];
 
-function calcArray(arr, fn) {
-    let resArray = [];
+// function calcArray(arr, fn) {
+//     arrRes = [];
+//     for (let i = 0; i < arr.length; i++) {
+//         arrRes.push(fn(arr[i]));
+//     };
+//     return arrRes;
+// };
+
+// function calcAge(birthYear) {
+//     return 2018 - birthYear;
+// };
+
+// function isFullAge(age) {
+//     return age >= 21;
+// };
+
+// function maxHeartRate(age) {
+//     if (age >= 18 && age <= 81) {
+//         return Math.round(206.9 - (0.67 * age));
+//     } else {
+//         return -1;
+//     }
+// };
+
+// let ages = calcArray(years, calcAge);
+// let legalAge = calcArray(ages, isFullAge);
+// let heartRate = calcArray(ages, maxHeartRate);
+
+// console.log(ages);
+// console.log(legalAge);
+// console.log(heartRate);
+
+
+// let years = [1956, 1979, 1978, 1977, 2007];
+
+// function calcArray(arr, fn) {
+//     let arrRes = [];
+//     for (let i = 0; i < arr.length; i++) {
+//         arrRes.push(fn(arr[i]));
+//     };
+//     return arrRes;
+// };
+
+// function calcAge(year) {
+//     return 2018 - year
+// };
+
+// function fullAge(age) {
+//     return age >= 18;
+// };
+
+// function retirement(age) {
+//     return 65 - age;
+// };
+
+// function yearBorn(age) {
+//     return 2018 - age;
+// };
+
+// function reverse() {
+//     return ages.reverse();
+// };
+
+
+// let ages = calcArray(years, calcAge);
+// let adult = calcArray(ages, fullAge);
+// let retired = calcArray(ages, retirement);
+// let birthYear = calcArray(ages, yearBorn);
+
+
+// console.log(ages);
+// console.log(reverse());
+// console.log(adult);
+// console.log(retired);
+// console.log(birthYear);
+
+// functions returning functions
+
+// function interviewQuestions(job) {
+//     if (job === "teacher") {
+//         return function(name) {
+//             console.log("What subject do you teach " + name + "?");
+//         };
+//     } else if(job === "designer") {
+//         return function(name) {
+//             console.log("So " + name + " Can you tell me somthing about UX");
+//         };
+//     } else {
+//         return function(name) {
+//             console.log("So then, what do you do? " + name);
+//         };
+//     };
+// };
+
+// interviewQuestions("teacher")("Mark");
+// interviewQuestions("designer")("Bark");
+// interviewQuestions("driver")("jane");
+
+// IIFE Imediately Invoked Function Expression data privacy;
+
+// (function() {
+//     let score = Math.random() * 10;
+//     console.log(score >= 6);
+// }) ();
+
+// (function(luck) {
+//     let score = Math.random() * 11; 
+//     if (score >= 6) {
+//         console.log("Win");
+//     } else {
+//         console.log("Loose");
+//     }
+// }) (2);
+
+// Closures
+
+function retirement(retirementAge) {
+    let a = " years left until retirement.";
+    return function(birthYear) {
+        let age = 2018 - birthYear;
+        console.log((retirementAge - age) + a);
+    };
 };
 
-let age = 27;
-let obj = {
-    a: 30,
-    b: "Las Vegas",
-}
-age = obj.a;
-console.log(age);
+let retirementUS = retirement(66);
+retirementUS(1979);
+
+retirement(65)(1979);
