@@ -228,15 +228,65 @@
 
 // Closures
 
-function retirement(retirementAge) {
-    let a = " years left until retirement.";
-    return function(birthYear) {
-        let age = 2018 - birthYear;
-        console.log((retirementAge - age) + a);
-    };
+// function retirement(retireAge) {
+//     let a = " years until retirement";
+//     return function(birthYear) {
+//         let age = 2018 - birthYear;
+//         console.log((retireAge - age) + a);
+//     };
+// };
+
+// let retirementUS = retirement(66);
+// let retirementGermany = retirement(65);
+// let retirementIceland = retirement(67);
+
+// retirementUS(1977);
+// retirementGermany(1977);
+// retirementIceland(1977);
+
+// retirement(65)(1979);
+
+// function interviewQuestions(job) {
+//     return function(name) {
+//         if (job === "designer") {
+//             console.log("So " + name + " Can you tell me somthing about UX");
+//         } else if (job === "teacher") {
+//             console.log("What subject do you teach " + name + "?");
+//         } else {
+//             console.log("So then, what do you do? " + name);
+//         };
+//     };
+// };
+
+// let teacher = interviewQuestions("teacher");
+// teacher("john"); 
+
+// interviewQuestions("designer")("dave");
+
+let john = {
+    name: "John",
+    age: 26,
+    job: "teacehr",
+    presentation: function(style, timeOfDay) {
+        if (style === "formal") {
+            console.log("Good " + timeOfDay + " Ladies and Gentlemen! I'm " + this.name + ", I'm a" + this.job + " and I'm " + this.age + " years old." );
+        } else if (style === "friendly") {
+            console.log("Hey What's up ? " + "I'm " + this.name + ", I'm a " + this.job + " and I'm " + this.age + " years old. Have a nice " + timeOfDay ); 
+        }
+    }
 };
 
-let retirementUS = retirement(66);
-retirementUS(1979);
+let emily = {
+    name: "Emily",
+    age: 35,
+    job: "designer"
+};
 
-retirement(65)(1979);
+let johnFriendly = john.presentation.bind(john, "friendly");
+let emilyFormal = john.presentation.bind(emily, "formal");
+
+emilyFormal("afternoon");
+johnFriendly("morning");
+john.presentation("formal", "afternoon");
+john.presentation("friendly", "evening");
+john.presentation.call(emily, "friendly", "afternoon");
