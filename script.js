@@ -22,7 +22,7 @@
 // }
 
 // Person.prototype.calcAge = function() {
-//     console.log(2018 - this.birthYear); 
+//     console.log(2018 - this.birthYear);
 // };
 
 // let john = new Person("Jon", 1979, "teacher");
@@ -144,7 +144,6 @@
 // console.log(legalAge);
 // console.log(heartRate);
 
-
 // let years = [1956, 1979, 1978, 1977, 2007];
 
 // function calcArray(arr, fn) {
@@ -175,12 +174,10 @@
 //     return ages.reverse();
 // };
 
-
 // let ages = calcArray(years, calcAge);
 // let adult = calcArray(ages, fullAge);
 // let retired = calcArray(ages, retirement);
 // let birthYear = calcArray(ages, yearBorn);
-
 
 // console.log(ages);
 // console.log(reverse());
@@ -218,7 +215,7 @@
 // }) ();
 
 // (function(luck) {
-//     let score = Math.random() * 11; 
+//     let score = Math.random() * 11;
 //     if (score >= 6) {
 //         console.log("Win");
 //     } else {
@@ -259,34 +256,95 @@
 // };
 
 // let teacher = interviewQuestions("teacher");
-// teacher("john"); 
+// teacher("john");
 
 // interviewQuestions("designer")("dave");
 
-let john = {
-    name: "John",
-    age: 26,
-    job: "teacehr",
-    presentation: function(style, timeOfDay) {
-        if (style === "formal") {
-            console.log("Good " + timeOfDay + " Ladies and Gentlemen! I'm " + this.name + ", I'm a" + this.job + " and I'm " + this.age + " years old." );
-        } else if (style === "friendly") {
-            console.log("Hey What's up ? " + "I'm " + this.name + ", I'm a " + this.job + " and I'm " + this.age + " years old. Have a nice " + timeOfDay ); 
-        }
-    }
+// let john = {
+//     name: "John",
+//     age: 26,
+//     job: "teacehr",
+//     presentation: function(style, timeOfDay) {
+//         if (style === "formal") {
+//             console.log("Good " + timeOfDay + " Ladies and Gentlemen! I'm " + this.name + ", I'm a" + this.job + " and I'm " + this.age + " years old." );
+//         } else if (style === "friendly") {
+//             console.log("Hey What's up ? " + "I'm " + this.name + ", I'm a " + this.job + " and I'm " + this.age + " years old. Have a nice " + timeOfDay );
+//         }
+//     }
+// };
+
+// let emily = {
+//     name: "Emily",
+//     age: 35,
+//     job: "designer"
+// };
+
+// let johnFriendly = john.presentation.bind(john, "friendly");
+// let emilyFormal = john.presentation.bind(emily, "formal");
+
+// emilyFormal("afternoon");
+// johnFriendly("morning");
+// john.presentation("formal", "afternoon");
+// john.presentation("friendly", "evening");
+// john.presentation.call(emily, "friendly", "afternoon");
+
+// let years = [1975, 2000, 1979, 1945, 1953];
+
+// function calcArray(arr, fn) {
+//     let arrRes = [];
+//     for (let i = 0; i < arr.length; i++) {
+//         arrRes.push(fn(arr[i]));
+//     };
+//     return arrRes;
+// };
+
+// function calcAge(age) {
+//     return 2018 - age;
+// };
+
+// function calcFullAge(limit, age) {
+//     return age >= limit;
+// };
+
+// let ages = calcArray(years, calcAge);
+// let fullJapan = calcArray(ages, calcFullAge.bind(this, 20));
+// console.log(ages);
+// console.log(fullJapan);
+
+
+// function Person(name, birthYear, job) {
+//     this.name = name;
+//     this.birthYear = birthYear;
+//     this.job = job;
+// }
+
+// Person.prototype.calcAge = function() {
+//     console.log(2018 - this.birthYear);
+// };
+
+// let john = new Person("Jon", 1979, "teacher");
+// let jane = new Person("Jane", 1996, "Designer");
+// let mark = new Person("Mark", 1975, "SalesPerson");
+
+// Person.prototype.lastName = "Smith";
+
+// john.fullName = function() {
+//     console.log(this.name + " " + this.lastName);
+// };
+// john.fullName();
+// john.calcAge();
+// console.log(john.name + john.lastName);
+// ;
+
+
+function Question(question, answers, correct) {
+    this.question = question;
+    this.answers = answers;
+    this.correct = correct;
 };
 
-let emily = {
-    name: "Emily",
-    age: 35,
-    job: "designer"
-};
+let question1 = new Question("whats up", ["yes", "no",], 0);
+let question2 = new Question("whats down", ["not up", "not down", "not anything"], 0);
+let question3 = new Question("what is not", ["not is not", "not is hot", "not is fat"], 0);
 
-let johnFriendly = john.presentation.bind(john, "friendly");
-let emilyFormal = john.presentation.bind(emily, "formal");
-
-emilyFormal("afternoon");
-johnFriendly("morning");
-john.presentation("formal", "afternoon");
-john.presentation("friendly", "evening");
-john.presentation.call(emily, "friendly", "afternoon");
+console.log(question1);
