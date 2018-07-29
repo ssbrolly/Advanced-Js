@@ -336,6 +336,41 @@
 // console.log(john.name + john.lastName);
 // ;
 
+// (function () {
+//     function Question(question, answers, correct) {
+//         this.question = question;
+//         this.answers = answers;
+//         this.correct = correct;
+//     };
+
+//     Question.prototype.displayQuestions = function () {
+//         console.log(this.question);
+
+//         for (let i = 0; i < this.answers.length; i++) {
+//             console.log(i + ":" + this.answers[i]);
+//         }
+//     };
+
+//     Question.prototype.checkAnswers = function (ans) {
+//         if (ans === this.correct) {
+//             console.log("Correct Answer");
+//         } else {
+//             console.log("Wrong Answer");
+//         };
+//     };
+
+//     let question1 = new Question("whats up", ["yes", "no",], 0);
+//     let question2 = new Question("whats down", ["not up", "not down", "not anything"], 0);
+//     let question3 = new Question("what is not", ["not is not", "not is hot", "not is fat"], 0);
+//     let questions = [question1, question2, question3];
+//     let n = Math.floor(Math.random() * questions.length);
+
+//     questions[n].displayQuestions();
+
+//     let answer = parseInt(prompt("Please select the correct answer"));
+
+//     questions[n].checkAnswers(answer);
+// })();
 
 function Question(question, answers, correct) {
     this.question = question;
@@ -343,8 +378,9 @@ function Question(question, answers, correct) {
     this.correct = correct;
 };
 
-let question1 = new Question("whats up", ["yes", "no",], 0);
-let question2 = new Question("whats down", ["not up", "not down", "not anything"], 0);
-let question3 = new Question("what is not", ["not is not", "not is hot", "not is fat"], 0);
+q1 = new Question("question1", ["wrong", "wrong", "right"], 2);
+q2 = new Question("question2", ["wrong", "right", "wrong"], 1);
+q3 = new Question("question3", ["right", "wrong", "wrong"], 0);
+q4 = new Question("question4", ["wrong", "wrong", "right"], 2);
 
-console.log(question1);
+let questions = [q1, q2, q3, q4];
