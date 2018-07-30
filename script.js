@@ -408,6 +408,10 @@
     // let answer = parseInt(prompt("Please select the correct answer"));
     // questions[n].checkAnswer(answer);
 
+    function score() {
+
+    }
+
     function nextQuestion() {
         let n = Math.floor(Math.random() * questions.length);
         questions[n].displayQuestions();
@@ -420,7 +424,6 @@
         };
 
     };
-
     nextQuestion();
 })();
 
