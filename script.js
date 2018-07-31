@@ -382,18 +382,26 @@
 
     Question.prototype.displayQuestions = function () {
         console.log(this.question);
-
         for (let i = 0; i < this.answers.length; i++) {
             console.log(i + ": " + this.answers[i]);
         };
     };
 
-    Question.prototype.checkAnswer = function (answer) {
+    Question.prototype.checkAnswer = function (answer, keepScore) {
+        let sc;
         if (answer === this.correct) {
             console.log("Correct Answer");
+            sc = keepScore(true);
         } else {
             console.log("Wrong Answer");
-        }
+            sc = keepScore(false);
+        };
+        this.displayScore(sc);
+    };
+
+    Question.prototype.displayScore = function (score) {
+        console.log("Current Score :" + score);
+        console.log("------------------------------------------------");
     };
 
 
@@ -409,8 +417,17 @@
     // questions[n].checkAnswer(answer);
 
     function score() {
+        let sc = 0;
+        return function (correct) {
+            if (correct) {
+                sc++;
+            }
+            return sc;
+        }
+    };
 
-    }
+    let keepScore = score();
+
 
     function nextQuestion() {
         let n = Math.floor(Math.random() * questions.length);
@@ -418,7 +435,7 @@
         let answer = prompt("Please select the correct answer");
 
         if (answer !== "exit") {
-            questions[n].checkAnswer(parseInt(answer));
+            questions[n].checkAnswer(parseInt(answer), keepScore);
             nextQuestion();
 
         };
