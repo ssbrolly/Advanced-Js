@@ -373,74 +373,96 @@
 // })();
 
 
-(function () {
-    function Question(question, answers, correct) {
-        this.question = question;
-        this.answers = answers;
-        this.correct = correct;
-    };
+// (function () {
+//     function Question(question, answers, correct) {
+//         this.question = question;
+//         this.answers = answers;
+//         this.correct = correct;
+//     };
 
-    Question.prototype.displayQuestions = function () {
-        console.log(this.question);
-        for (let i = 0; i < this.answers.length; i++) {
-            console.log(i + ": " + this.answers[i]);
-        };
-    };
+//     Question.prototype.displayQuestions = function () {
+//         console.log(this.question);
+//         for (let i = 0; i < this.answers.length; i++) {
+//             console.log(i + ": " + this.answers[i]);
+//         };
+//     };
 
-    Question.prototype.checkAnswer = function (answer, keepScore) {
-        let sc;
-        if (answer === this.correct) {
-            console.log("Correct Answer");
-            sc = keepScore(true);
-        } else {
-            console.log("Wrong Answer");
-            sc = keepScore(false);
-        };
-        this.displayScore(sc);
-    };
+//     Question.prototype.checkAnswer = function (answer, keepScore) {
+//         let sc;
+//         if (answer === this.correct) {
+//             console.log("Correct Answer");
+//             sc = keepScore(true);
+//         } else {
+//             console.log("Wrong Answer");
+//             sc = keepScore(false);
+//         };
+//         this.displayScore(sc);
+//     };
 
-    Question.prototype.displayScore = function (score) {
-        console.log("Current Score :" + score);
-        console.log("------------------------------------------------");
-    };
-
-
-    q1 = new Question("question1", ["wrong", "wrong", "right"], 2);
-    q2 = new Question("question2", ["wrong", "right", "wrong"], 1);
-    q3 = new Question("question3", ["right", "wrong", "wrong"], 0);
-    q4 = new Question("question4", ["wrong", "wrong", "right"], 2);
-    let questions = [q1, q2, q3, q4];
-
-    // let n = Math.floor(Math.random() * questions.length);
-    // questions[n].displayQuestions();
-    // let answer = parseInt(prompt("Please select the correct answer"));
-    // questions[n].checkAnswer(answer);
-
-    function score() {
-        let sc = 0;
-        return function (correct) {
-            if (correct) {
-                sc++;
-            }
-            return sc;
-        }
-    };
-
-    let keepScore = score();
+//     Question.prototype.displayScore = function (score) {
+//         console.log("Current Score :" + score);
+//         console.log("------------------------------------------------");
+//     };
 
 
-    function nextQuestion() {
-        let n = Math.floor(Math.random() * questions.length);
-        questions[n].displayQuestions();
-        let answer = prompt("Please select the correct answer");
+//     q1 = new Question("question1", ["wrong", "wrong", "right"], 2);
+//     q2 = new Question("question2", ["wrong", "right", "wrong"], 1);
+//     q3 = new Question("question3", ["right", "wrong", "wrong"], 0);
+//     q4 = new Question("question4", ["wrong", "wrong", "right"], 2);
+//     let questions = [q1, q2, q3, q4];
 
-        if (answer !== "exit") {
-            questions[n].checkAnswer(parseInt(answer), keepScore);
-            nextQuestion();
+//     // let n = Math.floor(Math.random() * questions.length);
+//     // questions[n].displayQuestions();
+//     // let answer = parseInt(prompt("Please select the correct answer"));
+//     // questions[n].checkAnswer(answer);
 
-        };
+//     function score() {
+//         let sc = 0;
+//         return function (correct) {
+//             if (correct) {
+//                 sc++;
+//             }
+//             return sc;
+//         }
+//     };
 
-    };
-    nextQuestion();
-})();
+//     let keepScore = score();
 
+
+//     function nextQuestion() {
+//         let n = Math.floor(Math.random() * questions.length);
+//         questions[n].displayQuestions();
+//         let answer = prompt("Please select the correct answer");
+
+//         if (answer !== "exit") {
+//             questions[n].checkAnswer(parseInt(answer), keepScore);
+//             nextQuestion();
+
+//         };
+
+//     };
+//     nextQuestion();
+// })();
+
+function Question(question, answers, correct) {
+    this.question = question;
+    this.answers = answers;
+    this.correct = correct;
+}
+
+Question.prototype.displayQuestions = function() {
+    console.log(this.question);
+
+    for (let i = 0; i < this.answers.length; i ++) {
+        console.log(i + this.answers[i])
+    }
+}
+
+q1 = new Question("question 1", ["wrong", "right", "wrong"], 1);
+q1 = new Question("question 2", ["right", "wrong", "wrong"], 0);
+q1 = new Question("question 3", ["wrong", "wrong", "right"], 2);
+q1 = new Question("question 4", ["wrong", "right", "wrong"], 1);
+let questions = [q1, q2, q3, q4];
+let n = Math.floor(Math.random() * questions.length);
+
+questions[n].displayQuestions();
